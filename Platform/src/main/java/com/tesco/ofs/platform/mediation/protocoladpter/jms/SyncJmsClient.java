@@ -15,7 +15,6 @@ public class SyncJmsClient implements ISyncJmsClient {
 	
     // send JMS message to the configured default URI
     public void jmsSendMessageToQueue(String destinationQueue, String message) {
-    	
     	JmsTemplate jmsTemplate = context.getBean("jmsQueueServiceTemplate", JmsTemplate.class);
     	Destination destination = context.getBean("receiveDestination", Destination.class);
     	jmsTemplate.setDefaultDestination(destination);
