@@ -13,10 +13,10 @@
 		<property name="destinationResolver" ref="jmsDestinationResolver" />
 	</bean>
 
-<!-- 	<bean id="jmsTopicServiceTemplate" class="org.springframework.jms.core.JmsTemplate">
+	<bean id="jmsTopicServiceTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<constructor-arg ref="jmsCoreConnectionFactory" />
 		<property name="pubSubDomain" value="true" />
-	</bean> -->
+	</bean>
 
 	<bean id="messageListener"
 		class="com.tesco.ofs.platform.mediation.protocoladpter.jms.JMSMessageListener">
