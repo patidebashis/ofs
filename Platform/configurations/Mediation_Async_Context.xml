@@ -14,7 +14,7 @@
 	</bean>
 
 	<bean id="jmsTopicServiceTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<constructor-arg ref="jmsCoreConnectionFactory" />
+		<constructor-arg ref="authenticationConnectionFactory" />
 		<property name="pubSubDomain" value="true" />
 	</bean>
 
