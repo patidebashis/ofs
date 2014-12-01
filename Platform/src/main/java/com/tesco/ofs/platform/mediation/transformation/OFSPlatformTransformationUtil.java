@@ -80,7 +80,7 @@ public class OFSPlatformTransformationUtil implements OFSPlatformConstants{
 			  } catch(IOException | JAXBException ex)			  
 			  {
 				  ThrowableExceptionHandler eh = new ThrowableExceptionHandler();
-				  eh.throwRunTimeException(ex.getMessage(), null, OFSPlatformRuntimeExceptionEnum.API_ERROR, null, null, jsonInput, ex);
+				  eh.throwRunTimeException(ex.getMessage(), ex);
 			  }
 			  
 			  return writer.toString();		 
