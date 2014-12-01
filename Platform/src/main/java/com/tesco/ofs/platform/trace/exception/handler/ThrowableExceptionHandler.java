@@ -23,4 +23,31 @@ public class ThrowableExceptionHandler implements IThrowableExceptionHandler {
 		throw ofsEx;
 	}
 	
+	public void throwRunTimeException(String message, String errorDescription, TescoExceptionType exceptionType, String additionalInfo, Map params, Throwable cause) {					
+		OFSPlatformRunTimeException ofsRunTimeEx = new OFSPlatformRunTimeException(message, cause);
+		ofsRunTimeEx.setErrorDescription(errorDescription);
+		ofsRunTimeEx.setErrorType(exceptionType);
+		ofsRunTimeEx.setErrorCode(exceptionType);
+		ofsRunTimeEx.setAdditionalInformation(additionalInfo);
+		ofsRunTimeEx.setParams(params);
+		
+		throw ofsRunTimeEx;
+				
+	}
+
+	
+	public void throwCheckedException(String message, String errorDescription, TescoExceptionType exceptionType, String additionalInfo, Map params, Throwable cause) throws OFSPlatformException {
+		// TODO Auto-generated method stub
+		
+		OFSPlatformException ofsEx = new OFSPlatformException(message, cause);
+		
+		ofsEx.setErrorDescription(errorDescription);
+		ofsEx.setErrorType(exceptionType);
+		ofsEx.setErrorCode(exceptionType);
+		ofsEx.setAdditionalInformation(additionalInfo);
+		ofsEx.setParams(params);
+		
+		throw ofsEx;
+	}
+	
 }

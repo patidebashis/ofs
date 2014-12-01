@@ -25,9 +25,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import com.tesco.ofs.platform.trace.exception.OFSPlatformRunTimeException;
-import com.tesco.ofs.platform.trace.exception.OFSPlatformRuntimeExceptionEnum;
+/*import com.tesco.ofs.platform.trace.exception.OFSPlatformRuntimeExceptionEnum;
 import com.tesco.ofs.platform.trace.exception.TescoExceptionType;
-import com.tesco.ofs.platform.trace.exception.TescoRunTimeException;
+import com.tesco.ofs.platform.trace.exception.TescoRunTimeException;*/
 import com.tesco.ofs.platform.trace.exception.handler.ThrowableExceptionHandler;
 
 public class OFSPlatformTransformationUtil implements OFSPlatformConstants{
@@ -233,25 +233,5 @@ public class OFSPlatformTransformationUtil implements OFSPlatformConstants{
 		        
 		        return xml;
 	    }		 
-		  
-		  //test method
-		  /*public static void main(String[] args) throws IOException, JAXBException {
-				
-				BufferedReader br = new BufferedReader(new FileReader("F:/Platform/APILayer/PlatformApi/Order-Json.txt"));
-				
-		        StringBuilder sb = new StringBuilder();
-		        String line = br.readLine();
-		        
-		        while (line != null) {
-		            sb.append(line);
-		            sb.append(System.lineSeparator());
-		            line = br.readLine();
-		        }
-		        
-		        br.close();
-		        System.out.println("line:::::" + sb.toString());
-			      String outXml = json2XML(sb.toString(), new Order()); //convert object to xml string
-			      System.out.println("outXml:::::" + outXml);
-		}*/
-
+		  		
 }
