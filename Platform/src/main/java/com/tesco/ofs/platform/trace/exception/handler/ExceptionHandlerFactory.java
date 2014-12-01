@@ -60,7 +60,7 @@ public class ExceptionHandlerFactory {
 		//add the out of box exception handler implementations.
 		exceptionHandlerMap.put(LoggerExceptionHandler.class, new LoggerExceptionHandler());
 		exceptionHandlerMap.put(ExceptionToJsonMapper.class, new ExceptionToJsonMapper());
-		exceptionHandlerMap.put(ReExecutor.class, new ReExecutor());
+		exceptionHandlerMap.put(ReExecutor.class, new ReExecutor(10));
 		
 	}
 	
@@ -93,16 +93,18 @@ public class ExceptionHandlerFactory {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public IExceptionMapperHandler getExceptionMapperHandler(Class exceptionHandlerCls)
 	{
 		
 		return (IExceptionMapperHandler) exceptionHandlerMap.get(exceptionHandlerCls);
 	}
 	
-	public IReExecutorExceptionHandler<?> getReExecutorHandler(Class reExecutor)
+	@SuppressWarnings("rawtypes")
+	public IReExecutorExceptionHandler getReExecutorHandler(Class reExecutor)
 	{
 		
-		return (IReExecutorExceptionHandler<?>) exceptionHandlerMap.get(reExecutor);
+		return (IReExecutorExceptionHandler) exceptionHandlerMap.get(reExecutor);
 	}
 		
 }

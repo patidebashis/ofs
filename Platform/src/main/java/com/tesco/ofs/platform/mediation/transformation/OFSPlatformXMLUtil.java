@@ -21,13 +21,15 @@ public class OFSPlatformXMLUtil {
 	{		
 			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);			
 	        Schema schema = null;
+	        
+	        IThrowableExceptionHandler eh = new ThrowableExceptionHandler();
+	        
 			try {
 				schema = factory.newSchema(new StreamSource(new ByteArrayInputStream(xsd.getBytes())));
 			} catch (SAXException e) {
 				/*// TODO Auto-generated catch block
-				e.printStackTrace();*/
-				IThrowableExceptionHandler eh =ExceptionHandlerFactory.getThrowableExceptionHandler(ThrowableExceptionHandler.class);
-				eh.throwRunTimeException(e);
+				e.printStackTrace();*/							
+				eh.throwRunTimeException(e.getMessage(), e);
 			}
 	        Validator validator = schema.newValidator();
 	        //validator.setErrorHandler(new XMLValidationErrorHandler());
@@ -35,7 +37,7 @@ public class OFSPlatformXMLUtil {
 				validator.validate(source);
 			} catch (SAXException | IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				eh.throwRunTimeException(e.getMessage(), e);
 			}									 
 	 }
 	
@@ -44,11 +46,13 @@ public class OFSPlatformXMLUtil {
 		
 			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			Schema schema = null;
+			 IThrowableExceptionHandler eh = new ThrowableExceptionHandler();
 			try {
 				schema = factory.newSchema(xsdFile);
 			} catch (SAXException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				eh.throwRunTimeException(e.getMessage(), e);
 			}
 			Validator validator = schema.newValidator();
 			//validator.setErrorHandler(new XMLValidationErrorHandler());
@@ -56,7 +60,8 @@ public class OFSPlatformXMLUtil {
 				validator.validate(source);
 			} catch (SAXException | IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				eh.throwRunTimeException(e.getMessage(), e);
 			}
 		
 	 }
