@@ -1,21 +1,22 @@
 package com.tesco.ofs.platform.trace.exception.handler;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
+
+import javax.inject.Inject;
 
 import com.tesco.ofs.platform.trace.logger.OFSPlatformLogger;
 
 public class ExceptionHandlerFactory {
 	
 	private static ExceptionHandlerFactory factory = null;
-	private final static OFSPlatformLogger logger = OFSPlatformLogger.getLogger(ExceptionHandlerFactory.class); 
+	
+	@Inject private static OFSPlatformLogger logger;
+	//private final static OFSPlatformLogger logger = OFSPlatformLogger.getLogger(ExceptionHandlerFactory.class); 
 	
 	@SuppressWarnings("rawtypes")
 	private Map exceptionHandlerMap = new ConcurrentHashMap();
@@ -31,8 +32,10 @@ public class ExceptionHandlerFactory {
 		Properties prop = new Properties();	
 		
 		InputStream input;
-		try {
-			input = ExceptionHandlerFactory.class.getResourceAsStream("exceptionhandler.properties")/*new FileInputStream("exceptionhandler.properties")*/;
+		try 
+		{
+			input = ExceptionHandlerFactory.class.getClass().getResourceAsStream("exceptionhandler.properties")/*new FileInputStream("exceptionhandler.properties")*/;
+			System.out.println("input:::" + input);
 			//load properties file
 			
 			if(input != null)
@@ -60,7 +63,8 @@ public class ExceptionHandlerFactory {
 		//add the out of box exception handler implementations.
 		exceptionHandlerMap.put(LoggerExceptionHandler.class, new LoggerExceptionHandler());
 		exceptionHandlerMap.put(ExceptionToJsonMapper.class, new ExceptionToJsonMapper());
-		exceptionHandlerMap.put(ReExecutor.class, new ReExecutor(10));
+		exceptionHandlerMap.put(ReExecutor.class, new ReExecutor());
+		exceptionHandlerMap.put(ThrowableExceptionHandler.class, new ThrowableExceptionHandler());
 		
 	}
 	

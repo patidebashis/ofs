@@ -23,6 +23,7 @@ public class ThrowableExceptionHandler implements IThrowableExceptionHandler {
 		throw ofsEx;
 	}
 	
+	@Override
 	public void throwRunTimeException(String message, String errorDescription, TescoExceptionType exceptionType, String additionalInfo, Map params, Throwable cause) {					
 		OFSPlatformRunTimeException ofsRunTimeEx = new OFSPlatformRunTimeException(message, cause);
 		ofsRunTimeEx.setErrorDescription(errorDescription);
@@ -36,6 +37,7 @@ public class ThrowableExceptionHandler implements IThrowableExceptionHandler {
 	}
 
 	
+	@Override
 	public void throwCheckedException(String message, String errorDescription, TescoExceptionType exceptionType, String additionalInfo, Map params, Throwable cause) throws OFSPlatformException {
 		// TODO Auto-generated method stub
 		
