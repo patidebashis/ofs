@@ -1,10 +1,17 @@
 package com.tesco.ofs.platform.trace.logger;
 
 
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
+
+import com.tesco.ofs.platform.trace.exception.OFSPlatformRunTimeException;
+
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.util.ContextInitializer;
+import ch.qos.logback.core.joran.spi.JoranException;
 
 
 public class OFSPlatformLogger {
@@ -95,4 +102,24 @@ public class OFSPlatformLogger {
 	{
 		
 	}
+			
+	public void setLogbackLogger()  {
+
+		LoggerContext context = getCurrentLogContext();
+		context.reset();
+		ContextInitializer initializer = new ContextInitializer(context);
+
+		try {	
+			initializer.autoConfig();
+		} catch(JoranException e) {			
+			throw new OFSPlatformRunTimeException(e.getMessage(), e);
+		}
+	}
+	
+	public static LoggerContext getCurrentLogContext() {
+
+		return (LoggerContext)LoggerFactory.getILoggerFactory();
+	}
+
+
 }
