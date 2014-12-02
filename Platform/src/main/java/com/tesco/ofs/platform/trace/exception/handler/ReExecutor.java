@@ -5,33 +5,28 @@ import java.util.concurrent.Callable;
 public class ReExecutor implements IReExecutorExceptionHandler {
 	
 	 private int currentCount; 
+
 	 private int maxCount = 5; 
 
 
 	public void setMaxCount(int maxCount) {
 		this.maxCount = maxCount;
 	}
-
-
 	public int getMaxCount() {
 		return maxCount;
 	}
 
-
-	/*public void setMaxCount(int maxCount) {
-		this.maxCount = maxCount;
-	}*/
 	
 	public ReExecutor(int maxCount)
 	{
 		this.maxCount = maxCount;
 	}
+
 	
 	public ReExecutor()
 	{
 		
 	}
-
 
 	@Override
 	public <T> T reexecute(Callable<T> func) {
@@ -69,9 +64,7 @@ public class ReExecutor implements IReExecutorExceptionHandler {
 	public static void main(String args[])
 	{
 		ReExecutor re = new ReExecutor(10);
-		re.setMaxCount(7);
-		
-		
+		re.setMaxCount(7);	
 		re.reexecute(
 				new Callable<Integer>()
 				{

@@ -50,21 +50,26 @@
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
+		</dependency>		
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>0.7.1</version>
 		</dependency>
-		
-		<!-- Ramesh[01-Dec-2014]: - org.json library -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20141113</version>
 		</dependency>
-		
-		<!-- Ramesh[01-Dec-2014]: - http client -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.3.6</version>
 		</dependency>
-
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-client</artifactId>
+			<version>0.7.1</version>
+		</dependency>
 	</dependencies>
 </project>
